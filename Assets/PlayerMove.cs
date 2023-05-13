@@ -9,30 +9,57 @@ public class PlayerMove : MonoBehaviour
     public static string VERTICAL = "Vertical";
     public static float speed = 5;
 
+    private bool isObtain;
+
     void Start()
     {
-
     }
 
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis(HORIZONTAL);
-        float verticalInput = Input.GetAxis(VERTICAL);
+        GetControl();
+    }
 
-        if (horizontalInput == 0F && verticalInput == 0F)
+    private void GetControl()
+    {
+        Vector3 movementDirection = Vector3.zero;
+        
+        if (Input.GetKey(KeyCode.W))
         {
-            return;
+            movementDirection += transform.forward;
+        }
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            movementDirection += -transform.right;
+        }
+        
+        if (Input.GetKey(KeyCode.S))
+        {
+            movementDirection += -transform.forward;
+        }
+        
+        if (Input.GetKey(KeyCode.D))
+        {
+            movementDirection += transform.right;
         }
 
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput).normalized * speed * Time.deltaTime;
-
-        if (Physics.Raycast(transform.position, movement, out RaycastHit hitInfo, movement.magnitude))
+        if (movementDirection != Vector3.zero)
         {
-            Debug.Log("Collision detected!");
-            return;
+            Ray ray = new Ray(transform.position, movementDirection);
+            RaycastHit hit;
+            
+            if (Physics.Raycast(ray, out hit, speed * Time.deltaTime))
+            {
+                if (hit.collider.tag.Equals("Obtain"))
+                {
+                    Debug.Log("Collision obtain detected");
+                    return;
+                }
+            }
         }
-
-        transform.position += movement;
+        
+        transform.position += movementDirection.normalized * speed * Time.deltaTime;
     }
 }
