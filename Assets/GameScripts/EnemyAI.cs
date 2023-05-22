@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
     public Transform player;
-    public float speed = 5.0f;
-    public float detectionDistance = 20.0f;
+    public float speed = 3.0f;
+    public float detectionDistance = 40.0f;
     public float avoidanceDistance = 10.0f;
-    public float avoidanceSpeed = 5.0f;
+    public float avoidanceSpeed = 3.0f;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -74,11 +75,6 @@ public class EnemyAI : MonoBehaviour
 
         // check if enemy touches the player
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer < 0.1f)
-        {
-            Debug.Log("Enemy touched the player!");
-            Reset();
-        }
     }
 
     private void Train()
@@ -86,8 +82,8 @@ public class EnemyAI : MonoBehaviour
         for (int i = 0; i < epochs; i++)
         {
             // generate random data for training
-            float playerX = Random.Range(-10f, 10f);
-            float playerZ = Random.Range(-10f, 10f);
+            float playerX = Random.Range(-40f, 40f);
+            float playerZ = Random.Range(-40f, 40f);
 
             // input data
             float[] inputs = new float[2];
@@ -104,11 +100,5 @@ public class EnemyAI : MonoBehaviour
 
         nn.SaveModel("Assets/GameScripts/Learning/EnemyModel" + GlobalScript.currentLvl + ".txt");
         Debug.Log("Model was saved");
-    }
-
-    private void Reset()
-    {
-        transform.position = initialPosition;
-        transform.rotation = initialRotation;
     }
 }

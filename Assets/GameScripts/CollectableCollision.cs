@@ -11,8 +11,9 @@ public class CollectableCollision : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Debug.Log("Collectable was triggered by player");
-
-            SceneManager.LoadScene("TestLvl" + GlobalScript.currentLvl);
+            
+            // TEMP, TODO: display menu
+            SceneManager.LoadScene("Lvl" + ++GlobalScript.currentLvl);
         }
         
     } 
