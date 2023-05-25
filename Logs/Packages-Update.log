@@ -68,3 +68,43 @@ The following packages were updated:
   com.unity.test-framework from version 1.1.11 to 1.1.31
   com.unity.textmeshpro from version 2.0.1 to 3.0.6
   com.unity.timeline from version 1.2.13 to 1.6.4
+
+=== Mon May 22 22:16:06 2023
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.cinemachine from version 2.6.0 to 2.8.9
+  com.unity.collab-proxy from version 1.2.16 to 2.0.3
+  com.unity.ide.rider from version 1.1.4 to 3.0.20
+  com.unity.ide.vscode from version 1.2.1 to 1.2.5
+  com.unity.test-framework from version 1.1.14 to 1.1.31
+  com.unity.textmeshpro from version 2.0.1 to 3.0.6
+  com.unity.timeline from version 1.2.6 to 1.6.4
+The following packages were removed:
+  com.unity.render-pipelines.lightweight@7.3.1
+
+=== Mon May 22 22:16:07 2023
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.cinemachine@2.8.9
+
+=== Tue May 23 14:56:33 2023
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.cinemachine from version 2.6.0 to 2.8.9
+  com.unity.collab-proxy from version 1.2.16 to 2.0.3
+  com.unity.ide.rider from version 1.1.4 to 3.0.20
+  com.unity.ide.vscode from version 1.2.1 to 1.2.5
+  com.unity.test-framework from version 1.1.14 to 1.1.31
+  com.unity.textmeshpro from version 2.0.1 to 3.0.6
+  com.unity.timeline from version 1.2.6 to 1.6.4
+The following packages were removed:
+  com.unity.render-pipelines.lightweight@7.3.1

@@ -5,8 +5,8 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform player;
     public float speed = 3.0f;
-    public float detectionDistance = 40.0f;
-    public float avoidanceDistance = 10.0f;
+    public float detectionDistance = 70.0f;
+    public float avoidanceDistance = 5.0f;
     public float avoidanceSpeed = 3.0f;
 
     private Vector3 initialPosition;
@@ -17,9 +17,11 @@ public class EnemyAI : MonoBehaviour
     public float learningRate = 0.1f;
 
     private NeuralNetwork nn;
+    private Rigidbody rb;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         initialPosition = transform.position;
         initialRotation = transform.rotation;
         
@@ -31,7 +33,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            nn.LoadModel("Assets/GameScripts/Learning/EnemyModel" + GlobalScript.currentLvl + ".txt");
+            nn.LoadModel("Assets/GameScripts/Learning/EnemyModel.txt");
         }
     }
 
@@ -43,7 +45,6 @@ public class EnemyAI : MonoBehaviour
         inputs[0] = player.position.x - transform.position.x; // distance player enemy (X)
         inputs[1] = player.position.z - transform.position.z; // distance player enemy (Z)
 
-        // output data
         float[] outputs = nn.FeedForward(inputs);
 
         Vector3 movementDirection = Vector3.zero;
@@ -56,7 +57,6 @@ public class EnemyAI : MonoBehaviour
             movementDirection.z = outputs[1] > 0.5f ? 1f : -1f;
         }
 
-        // Avoid Inspection Collisions
         if (movementDirection != Vector3.zero)
         {
             Ray ray = new Ray(transform.position, movementDirection);
@@ -64,26 +64,28 @@ public class EnemyAI : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, avoidanceDistance))
             {
-                if (hit.collider.tag.Equals("Obtain"))
+                if (hit.collider.tag.Equals("Obtains"))
                 {
                     movementDirection += hit.normal * avoidanceSpeed;
                 }
             }
         }
 
-        transform.position += movementDirection.normalized * speed * Time.deltaTime;
+        Vector3 newPosition = transform.position + movementDirection.normalized * speed * Time.deltaTime;
+        newPosition.y = transform.position.y;
 
-        // check if enemy touches the player
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        rb.MovePosition(newPosition);
     }
+
+
 
     private void Train()
     {
         for (int i = 0; i < epochs; i++)
         {
             // generate random data for training
-            float playerX = Random.Range(-40f, 40f);
-            float playerZ = Random.Range(-40f, 40f);
+            float playerX = Random.Range(-70f, 70f);
+            float playerZ = Random.Range(-70f, 70f);
 
             // input data
             float[] inputs = new float[2];
@@ -98,7 +100,7 @@ public class EnemyAI : MonoBehaviour
             nn.Train(inputs, targets, learningRate);
         }
 
-        nn.SaveModel("Assets/GameScripts/Learning/EnemyModel" + GlobalScript.currentLvl + ".txt");
+        nn.SaveModel("Assets/GameScripts/Learning/EnemyModel.txt");
         Debug.Log("Model was saved");
     }
 }
