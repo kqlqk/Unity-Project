@@ -10,7 +10,9 @@ public class CameraMove : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
-        offset = new Vector3(0, 3.21f, -2f);
+        offset = new Vector3(0f, 3.21f, -2f);
+        
+        transform.rotation = new Quaternion(75,0,0,180);
     }
 
     void Update()

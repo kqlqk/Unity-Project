@@ -13,8 +13,8 @@ public class EnemyAI : MonoBehaviour
     private Quaternion initialRotation;
 
     public bool isTraining = true;
-    public int epochs = 1000;
-    public float learningRate = 0.1f;
+    public int epochs = 10000000;
+    public float learningRate = 0.011f;
 
     private NeuralNetwork nn;
     private Rigidbody rb;
