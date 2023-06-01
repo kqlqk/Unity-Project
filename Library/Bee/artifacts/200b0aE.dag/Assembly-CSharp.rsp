@@ -353,6 +353,7 @@
 "Assets/GameScripts/GlobalScript.cs"
 "Assets/GameScripts/NeuralNetwork.cs"
 "Assets/GameScripts/PlayerMove.cs"
+"Assets/GameScripts/Portal1Move.cs"
 "Assets/Scenes/MainMenu/MainMenu.cs"
 -langversion:9.0
 

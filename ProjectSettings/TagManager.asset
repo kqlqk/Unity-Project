@@ -7,6 +7,9 @@ TagManager:
   - Obtain
   - Enemy
   - Collectable
+  - Portal1
+  - Portal2
+  - EnemyPortal
   layers:
   - Default
   - TransparentFX
