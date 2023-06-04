@@ -3,18 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float speed = 3.0f;
     public float detectionDistance = 70.0f;
     public float avoidanceDistance = 5.0f;
     public float avoidanceSpeed = 3.0f;
-
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
-
-    public bool isTraining = true;
+    private Animator animator;
+    
+    public bool isTraining = false;
     public int epochs = 10000000;
-    public float learningRate = 0.011f;
+    public float learningRate = 0.01f;
 
     private NeuralNetwork nn;
     private Rigidbody rb;
@@ -22,10 +20,9 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
-        
         nn = new NeuralNetwork(2, 2, 10);
+        player = GameObject.FindWithTag("Player").transform;
+        animator = GetComponent<Animator>();
 
         if (isTraining)
         {
@@ -75,6 +72,19 @@ public class EnemyAI : MonoBehaviour
         newPosition.y = transform.position.y;
 
         rb.MovePosition(newPosition);
+        
+        if (movementDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+            rb.MoveRotation(targetRotation);
+            
+            animator.SetFloat("speed", 1f);
+            
+        }
+        else
+        {
+           animator.SetFloat("speed", 0f);
+        }
     }
 
 
@@ -84,8 +94,8 @@ public class EnemyAI : MonoBehaviour
         for (int i = 0; i < epochs; i++)
         {
             // generate random data for training
-            float playerX = Random.Range(-70f, 70f);
-            float playerZ = Random.Range(-70f, 70f);
+            float playerX = Random.Range(-detectionDistance, detectionDistance);
+            float playerZ = Random.Range(-detectionDistance, detectionDistance);
 
             // input data
             float[] inputs = new float[2];

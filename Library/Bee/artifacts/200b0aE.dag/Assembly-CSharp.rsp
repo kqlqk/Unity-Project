@@ -346,15 +346,15 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/GameScripts/CameraMove.cs"
+"Assets/GameScripts/CameraPosition.cs"
 "Assets/GameScripts/CollectableCollision.cs"
 "Assets/GameScripts/EndGameCollision.cs"
 "Assets/GameScripts/EnemyAI.cs"
 "Assets/GameScripts/GlobalScript.cs"
 "Assets/GameScripts/NeuralNetwork.cs"
 "Assets/GameScripts/PlayerMove.cs"
-"Assets/GameScripts/Portal1Move.cs"
-"Assets/Scenes/MainMenu/MainMenu.cs"
+"Assets/GameScripts/PortalMove.cs"
+"Assets/Scenes/MainMenu/mainmenu.cs"
 -langversion:9.0
 
 /deterministic

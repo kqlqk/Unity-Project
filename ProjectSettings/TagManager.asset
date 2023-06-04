@@ -10,6 +10,7 @@ TagManager:
   - Portal1
   - Portal2
   - EnemyPortal
+  - Head
   layers:
   - Default
   - TransparentFX
