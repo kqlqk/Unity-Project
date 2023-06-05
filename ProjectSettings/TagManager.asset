@@ -11,6 +11,8 @@ TagManager:
   - Portal2
   - EnemyPortal
   - Head
+  - QuitButton
+  - RestartButton
   layers:
   - Default
   - TransparentFX

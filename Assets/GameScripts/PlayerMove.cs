@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         cameraTransform = GameObject.FindWithTag("MainCamera").transform;
         animator = GetComponent<Animator>();
     }
