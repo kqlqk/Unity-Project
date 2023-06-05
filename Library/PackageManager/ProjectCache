@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638203833660000000
+      ticks: 638216009050000000
     m_Hash: 3384693146
   m_LockFileStatus:
     m_FilePath: /Users/kqlqk/Desktop/Unity-project/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638203833680000000
+      ticks: 638216009050000000
     m_Hash: 1075529972
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -460,10 +460,12 @@ m_ResolvedPackages:
     - 3.0.18
     - 3.0.20
     - 3.0.21
+    - 3.0.22
     compatible:
     - 3.0.20
     - 3.0.21
-    verified: 3.0.21
+    - 3.0.22
+    verified: 3.0.22
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -1019,6 +1021,7 @@ m_ResolvedPackages:
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
     compatible:
     - 1.6.4
     - 1.6.5
@@ -1032,6 +1035,7 @@ m_ResolvedPackages:
     - 1.8.0
     - 1.8.1
     - 1.8.2
+    - 1.8.3
     verified: 1.6.5
   dependencies:
   - name: com.unity.modules.director
@@ -3239,10 +3243,12 @@ m_ResolvedPackages:
     - 1.2.1
     - 1.2.2
     - 1.2.3
+    - 1.2.4
     compatible:
     - 1.2.2
     - 1.2.3
-    verified: 1.2.3
+    - 1.2.4
+    verified: 1.2.4
   dependencies:
   - name: com.unity.test-framework
     version: 1.0.16
